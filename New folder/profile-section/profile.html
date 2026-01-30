@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="icon" href="../image/main-log.jpg">
+    <link rel="stylesheet" href="profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Bogle&family=Instrument+Serif:ital@0;1&family=Oswald:wght@200..700&family=Pacifico&family=Roboto+Slab:wght@100..900&family=Rochester&display=swap" rel="stylesheet">
+</head>
+<body>
+     <div class="main-layout" id="main-layout">
+
+        <div class="nav-section">
+            <div class="main-logo"></div>
+            <div class="main-page-title"><h1>siva guppy farm</h1></div>
+            <div class="page-exit"></div>
+        </div>
+
+        <div class="inner-data-content-section">
+            <div class="page-title"><h2>profile details:</h2> <div class="edit-icon profile-edit"></div></div>
+            <div class="p-data">
+                 <div class="data">
+                    <p>user id: kjsonfonsn</p>
+                </div>
+                <div class="data"><p>name: aviansh</p></div>
+                <div class="data">
+                    <p>mobile number: 8974570493</p>
+                </div>
+                <div class="data">
+                    <p>address:23, Green Valley Street,Near Sri Lakshmi Temple,Anna Nagar East</p>
+                </div>
+                
+                <div class="data">
+                    <p>pin code: 600102</p>
+                </div>
+            </div>
+
+            <div class="cart-data">
+                <div class="page-title"><h2>cart details :</h2><div class="edit-icon cart-edit"></div></div>
+                <div class="cart-product">
+
+                </div>
+            </div>
+        </div>
+
+    </div> 
+</body>
+<script type="module">
+
+import {fishlist,plant,bettaFishList,cactusPlantList} from "../data-base/data-file.js"
+
+const profileData=JSON.parse(localStorage.getItem("profile"))
+const cartdata=JSON.parse(localStorage.getItem("fish-cart-data"))
+
+document.querySelector(".profile-edit").addEventListener("click",()=>location.href='../login-section/login.html')
+document.querySelector(".cart-edit").addEventListener("click",()=>location.href="../main-page-section/main.html#cart-section");
+document.querySelector(".page-exit").addEventListener("click",()=>location.href="../main-page-section/main.html")
+
+if(profileData){
+    
+let pData=``
+
+let data={
+    "userid":profileData["userid"],
+    "name":profileData["name"],
+    "mobile number":profileData["mobile"],
+    "address":profileData["address"],
+    "district":profileData["district"],
+    "pincode":profileData["pincode"]
+}
+
+let datacheck=["userid","name","mobile number","address","district","pincode"] 
+
+for(let i=0;i<datacheck.length;i++){
+    const newdata=`<div class="data"><p>${datacheck[i]}: ${data[datacheck[i]]}</p></div>`
+    pData+=newdata
+}
+
+document.querySelector(".p-data").innerHTML=pData
+
+}else{
+    location.href="../login-section/login.html"
+}
+
+
+
+if(cartdata && cartdata.length>=1){
+
+let finalcart=``
+
+    for(let i=0;i<cartdata.length;i++){
+        let selection=cartdata[i]
+        const newData=`
+             <div class="c-p-d">
+                        <div class="c-p-d-n"><p>${selection["name"]}</p></div>
+                        <div class="c-p-d-i" style="background-image:url(${selection["image"]})"></div>
+                        <div class="c-p-d-ep"><p>each pair: ${selection["price"]}₹</p></div>
+                        <div class="c-p-d-t"><p>toatl pair: ${selection["quantity"]}</p></div>
+                        <div class="c-p-d-tp"><p>total:  ${selection["totalPrice"]}₹</p></div>
+                    </div>
+        `
+        finalcart+=newData
+    }
+    document.querySelector(".cart-product").innerHTML=finalcart
+}
+else{
+    document.querySelector(".cart-product").style.height="220px"
+    document.querySelector(".cart-product").innerHTML=`<div class="c-p-d" style="margin: auto; background-image: url(../image/betta/ac3211fd2f127654355813a66efbed64.jpg); background-size: cover;"><p style="font-family:myFont; font-size: 30px; color: black; width: 100%; grid-row:1/2; grid-column: 1/-1; text-align: center;">product not found</p></div>`
+    console.log("cart data not found");
+}
+</script>
+</html>
