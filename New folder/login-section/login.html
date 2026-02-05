@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Log-in</title>
+    <link rel="icon" href="../image/main-log.jpg">
+    <link rel="stylesheet" href="login.css">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Bogle&family=Instrument+Serif:ital@0;1&family=Oswald:wght@200..700&family=Pacifico&family=Roboto+Slab:wght@100..900&family=Rochester&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main-section">
+        <div class="main-nav-section">
+            <div class="main-logo"></div>
+            <div class="brand-name"><h2>siva guppy farm</h2></div>
+            <div class="icon-close"></div>
+        </div>
+
+        <div class="login-section">
+            <div class="login-title"><h2>enter your details:</h2></div>
+            <label for="name">name: <input type="text" placeholder="name" id="name"></label>
+            <label for="mobile-number">mobile number: <input type="number" placeholder="mobile number" id="mobile"></label>
+            <label for="address">address : <textarea style="width: 70%; border-radius: 5px; margin-left: auto; height: 100px;"  placeholder="address" id="address"></textarea></label>
+            <label for="location">enter you district : <input type="text" placeholder="district " id="district"></label>
+            <label for="pincode">land pin code : <input type="number" placeholder="pin code" id="pincode"></label>
+            <label for="note">loand mark: <textarea style="width: 70%; border-radius: 5px; margin-left: auto; height: 100px;"  placeholder="add any land make we can find your house like (building,shop...etc)" id="land"></textarea></label> 
+        </div>
+
+        <div class="care-full-message"><p>*this data we used for contact you and delivery purpose. so fill it clearly</p></div>
+        <div id="conform-btn" class="conform-btn" onclick="submitdata()"><p>conform</p></div>
+        <div id="login-btn" class="conform-btn" style="display: none;" onclick="MainSit()"><p>log-in</p></div>
+
+    </div>
+
+    <div id="message"><div class="line"></div><p>hello brother </p></div>
+</body>
+<script type="module" src="login.js"></script>
+
+</html>
